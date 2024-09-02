@@ -10,8 +10,10 @@ lines = []
 next = 0
 
 num_sat = 10
+
 s_time = 0
 def make():
+  global s_time
   for i in range(num_sat):
     sat = Actor("satellite")
     sat.pos = random.randint(30, 570), random.randint(30, 570)
@@ -20,6 +22,7 @@ def make():
   s_time = time.time()
 
 def draw():
+  global next, num_sat
   screen.blit("sky",(0,0))
   for i in range(num_sat):
     satellites[i].draw()
@@ -27,8 +30,14 @@ def draw():
   
   for i in lines:
     screen.draw.line(i[0], i[1], (255,255,255))
-
+  if next<num_sat:
+    duration = time.time()-s_time
+    screen.draw.text(str(round(duration, 1)), (50, 50))
+  else:
+    screen.draw.text(str(duration), (50, 50))
 make()
+def update():
+  pass
 
 def on_mouse_down(pos):
   global next
