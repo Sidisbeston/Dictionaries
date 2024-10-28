@@ -1,7 +1,7 @@
 import pgzrun
 import random
 
-HEIGHT = 600
+HEIGHT = 600 
 WIDTH = 1200
 
 score = 0
